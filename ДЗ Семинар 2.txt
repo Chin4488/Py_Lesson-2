@@ -1,0 +1,66 @@
+# Найти сумму чисел списка стоящих на нечетной позиции
+# Пример:[1,2,3,4] -> 4
+
+list = []
+N = int(input('Введите количество чисел в списке: '))
+for i in range(N):
+        temp = int(input('Введите число: '))
+        list.append(temp)
+print('Введённый список: ')
+print(list)
+summ = 0
+for i in range(0, N, 2):
+    summ += list[i]
+print('Сумма элементов, стоящих на нечётных позициях = ', summ)
+
+
+# Найти произведение пар чисел в списке. 
+# Парой считаем первый и последний элемент, второй и предпоследний и т.д. 
+# Пример: [2, 3, 4, 5, 6] => [12, 15, 16]; [2, 3, 5, 6] => [12, 15] 
+import math
+list_in = []
+N = int(input('Введите количество чисел в списке: '))
+for i in range(N):
+        temp = int(input('Введите число: '))
+        list_in.append(temp)
+print('Введённый список: ')
+print(list_in)
+list_out = []
+for i in range(math.ceil(N/2)):
+    list_out.append(list_in[i] * list_in[len(list_in) - i - 1])
+print(list_out)
+
+
+# В заданном списке вещественных чисел найдите разницу между 
+# максимальным и минимальным значением дробной части элементов. 
+# Пример: [1.1, 1.2, 3.1, 5, 10.01] => 0.19
+
+def remains(n):
+    decimal = divmod(n, 1)
+    return round(list(decimal)[1], 10)
+
+list_in = [1.1, 1.2, 3.1, 5, 10.01]
+list_part = []
+for i in range(len(list_in)):
+    if remains(list_in[i]) != 0:
+        list_part.append(remains(list_in[i]))
+print(list_in, "=>", (max(list_part) - min(list_part)))
+
+
+# Написать программу преобразования десятичного числа в двоичное.
+
+number = int(input('Введите десятичное число: '))
+bit = ''
+while number > 0:
+    bit = str(number % 2) + bit
+    number = number // 2
+print('Двоичное число:', bit)
+
+
+# Написать программу преобразования двоичного числа в десятичное.
+
+number = input("Введите двоичное число: ")
+temp = 0
+for i in range(len(number)):
+    temp += int(number[i]) * (2**(len(number) - i - 1))
+print('Десятичное число: ' + str(temp))
